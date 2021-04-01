@@ -1,29 +1,78 @@
-% This is a simple sample document.  For more complicated documents take a look in the excersice tab. Note that everything that comes after a % symbol is treated as comment and ignored when the code is compiled.
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{diffcoeff}
 
-\documentclass{article} % \documentclass{} is the first command in any LaTeX code.  It is used to define what kind of document you are creating such as an article or a book, and begins the document preamble
+\newcommand{\abs}[1]{\left | #1 \right |}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
 
-\usepackage{amsmath} % \usepackage is a command that allows you to add functionality to your LaTeX code
+\title{MTH252 Midterm Assignment}
+\author{Bao-Hiep Le}
+\date{\today}
 
-\title{Simple Sample} % Sets article title
-\author{My Name} % Sets authors name
-\date{\today} % Sets date for date compiled
+\begin{document}
 
-% The preamble ends with the command \begin{document}
-\begin{document} % All begin commands must be paired with an end command somewhere
-  \maketitle % creates title using information in preamble (title, author, date)
+\maketitle
 
-  \section{Hello World!} % creates a section
+\section{Introduction}
 
-  \textbf{Hello World!} Today I am learning \LaTeX. %notice how the command will end at the first non-alphabet charecter such as the . after \LaTeX
-    \LaTeX{} is a great program for writing math. I can write in line math such as $a^2+b^2=c^2$ %$ tells LaTexX to compile as math
-    . I can also give equations their own space:
-  \begin{equation} % Creates an equation environment and is compiled as math
-  \gamma^2+\theta^2=\omega^2
-  \end{equation}
-  If I do not leave any blank lines \LaTeX{} will continue  this text without making it into a new paragraph.  Notice how there was no indentation in the text after equation (1).
-  Also notice how even though I hit enter after that sentence and here $\downarrow$
-    \LaTeX{} formats the sentence without any break.  Also   look  how      it   doesn't     matter          how    many  spaces     I put     between       my    words.
+\begin{align*}
+\frac{1}{P} \cdot \diff{P}{t} &= aP + b
+\end{align*}
 
-  For a new paragraph I can leave a blank space in my code.
+\begin{equation} \label{int_eqn}
+\int \frac{\dl{P}}{P(aP + b)} = \int \dl{t}
+\end{equation}
 
-\end{document} % This is the end of the document
+To evaluate the integral on the left side, we use partial fraction decomposition:
+
+\begin{align*}
+\frac{1}{P(aP + b)} = \frac{X}{P} + \frac{Y}{aP + b}
+\end{align*}
+
+Multiplying both sides of this equation by $P(aP + b)$ and rearranging the terms, we have:
+
+\begin{align*}
+1 = (Xa + Y)P + Xb
+\end{align*}
+
+The polynomials are identical, so their coefficients must be equal:
+
+\begin{align*}
+Xa + Y &= 0 \\
+Xb &= 1
+\end{align*}
+
+We get $X = \dfrac{1}{b}$ and $Y = \dfrac{-a}{b}$. Therefore:
+
+\begin{align*}
+\frac{1}{P(aP + b)} = \frac{1}{b} \cdot \frac{1}{P} - \frac{a}{b} \cdot \frac{1}{aP + b}
+\end{align*}
+
+We can now rewrite equation \ref{int_eqn} as:
+
+\begin{align*}
+\int \left ( \frac{1}{b} \cdot \frac{1}{P} - \frac{a}{b} \cdot \frac{1}{aP + b} \right ) \dl{P} &= \int \dl{t} \\
+\frac{1}{b} \ln \abs{P} - \frac{1}{b} \ln \abs{aP + b} &= t + C \\
+\ln \abs{\frac{P}{aP + b}} &= bt + bC \\
+\abs{\frac{P}{aP + b}} &= e^{bt + bC} = e^{bt}e^{bC} \\
+\frac{P}{aP + b} &= Ae^{bt} \numberthis \label{int2_eqn}
+\end{align*}
+
+where $A = \pm e^{bC}$. Solving for P, we get:
+
+\begin{align*}
+P = \frac{bAe^{bt}}{1 - aAe^{bt}}
+\end{align*}
+
+We find the value of A by putting $t = 0$ in equation \ref{int2_eqn}:
+
+\begin{align*}
+A = \frac{P_0}{aP_0 + b}
+\end{align*}
+
+\begin{align*}
+\diff{P}{t} &= \dfrac{b^2Ae^{bt}}{\left ( 1 - aAe^{bt} \right ) ^2}
+\end{align*}
+
+\end{document}
