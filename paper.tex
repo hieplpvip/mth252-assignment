@@ -205,8 +205,9 @@ A = 122169.433209181
     \input{fig4.pgf}
   \end{center}
   \caption{Total number of COVID-19 death cases in Spain from April 1 to
-  April 30, 2020 from official data (red points) and the
-  theoretical prediction using equation \ref{final_eqn} (blue line).}
+  April 30, 2020 from official data (red points) and theoretical prediction
+  using equation \ref{final_eqn} (blue line).}
+  \label{prediction}
 \end{figure}
 
 \begin{figure}[H]
@@ -218,6 +219,13 @@ A = 122169.433209181
 \end{figure}
 
 \section*{Discussion}
+
+This paper presents a simple logistic model for predicting COVID-19 fatality in Spain.
+As showed in figure \ref{prediction}, the total number of death cases increased
+exponentially in the early stages but began to level off at the end of April.
+The model predicts that daily death cases would decrease significantly in May,
+which indeed happened in reality. Therefore, the logistic model is a suitable
+choice for predicting COVID-19 fatality.
 
 The source code of this paper is available at
 \url{https://github.com/hieplpvip/mth252-assignment}.
