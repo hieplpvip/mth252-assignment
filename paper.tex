@@ -2,11 +2,23 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{diffcoeff}
+\usepackage{pgf}
+
+\usepackage[backend=bibtex,style=nature,hyperref=true,autocite=superscript]{biblatex}
+\addbibresource{paper.bib}
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks = true,
+  citecolor = {blue}
+}
+
+%\usepackage{layouts}
 
 \newcommand{\abs}[1]{\left | #1 \right |}
 \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
 
-\title{MTH252 Midterm Assignment}
+\title{Modeling of COVID-19 death cases in Spain by Differential Equation}
 \author{Bao-Hiep Le}
 \date{\today}
 
@@ -14,7 +26,11 @@
 
 \maketitle
 
-\section{Introduction}
+% Set this value as figure width in matplotlib
+%\printinunitsof{in}\prntlen{\textwidth}
+
+This paper uses data from Our World in Data COVID-19 dataset \autocite{owid-covid-data}.
+\section*{Introduction}
 
 \begin{align*}
 \frac{1}{P} \cdot \diff{P}{t} &= aP + b
@@ -74,5 +90,7 @@ A = \frac{P_0}{aP_0 + b}
 \begin{align*}
 \diff{P}{t} &= \dfrac{b^2Ae^{bt}}{\left ( 1 - aAe^{bt} \right ) ^2}
 \end{align*}
+
+\printbibliography
 
 \end{document}

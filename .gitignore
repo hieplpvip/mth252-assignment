@@ -1,4 +1,10 @@
 .python-version
 .ipynb_checkpoints
 .vscode
-build
+*-blx.bib
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.run.xml
