@@ -1,10 +1,11 @@
-\documentclass[12pt]{article}
+\documentclass[12pt]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{diffcoeff}
 \usepackage{float}
 \usepackage{pgf}
 \usepackage{indentfirst}
+\usepackage{tabu}
 \usepackage[labelfont=bf,skip=5pt]{caption}
 
 \usepackage[backend=bibtex,style=nature,hyperref=true,autocite=superscript]{biblatex}
@@ -22,6 +23,7 @@
 \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
 
 \title{Modeling of COVID-19 death cases in Spain by Differential Equation}
+\subtitle{MTH252 Assignment}
 \author{Bao-Hiep Le}
 \date{\today}
 
@@ -80,18 +82,19 @@ is calculated using the formula:
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{ |c|c|c|c|c|c|c| }
+\tabulinesep=1.2mm
+\begin{tabu}{ |c|c|c|c|c|c|c| }
   \hline
   $t$ (days) & 0 & 2 & 4 & 6 & 8 & 10\\
   \hline
   $P$ (observed) & 9387 & 11198 & 12641 & 14045 & 15447 & 16606 \\
   \hline
-  $\diff{P}{t}$ & 961.0 & 799.5 & 697.0 & 725.5 & 644.5 & 564.0 \\
+  $\displaystyle\diff{P}{t}$ & 961.0 & 799.5 & 697.0 & 725.5 & 644.5 & 564.0 \\
   \hline
-  $\frac{1}{P} \diff{P}{t}$ & 0.102376 & 0.071397 & 0.055138 & 0.051655 & 0.041723 & 0.033964 \\
+  $\dfrac{1}{P} \displaystyle\diff{P}{t}$ & 0.102376 & 0.071397 & 0.055138 & 0.051655 & 0.041723 & 0.033964 \\
   \hline
-\end{tabular}
-\caption{Sample values of $P$, $\diff{P}{t}$, and the relative growth rate $\frac{1}{P} \diff{P}{t}$.}
+\end{tabu}
+\caption{Sample values of $P$, $\displaystyle\diff{P}{t}$, and the relative growth rate $\dfrac{1}{P} \displaystyle\diff{P}{t}$.}
 \label{table:2}
 \end{table}
 
@@ -105,7 +108,7 @@ is calculated using the formula:
 For this paper, we use a variant of the Logistic Growth Model:
 
 \begin{equation} \label{model_eqn}
-\frac{1}{P} \cdot \diff{P}{t} = aP + b
+\frac{1}{P} \diff{P}{t} = aP + b
 \end{equation}
 
 The coefficients $a$ and $b$ are determined using least squares polynomial fit:
@@ -121,7 +124,7 @@ b &= 0.12215521367938273
   \begin{center}
     \input{fig3.pgf}
   \end{center}
-  \caption{Relative growth rate, $\frac{1}{P} \cdot \diff{P}{t}$ (red points), as a function of $P$ and the best fitted line (blue).}
+  \caption{Relative growth rate, $\dfrac{1}{P} \displaystyle\diff{P}{t}$ (red points), as a function of $P$ and the best fitted line (blue).}
 \end{figure}
 
 \section*{Solving Differential Equation}
@@ -202,10 +205,8 @@ A = 122169.433209181
     \input{fig4.pgf}
   \end{center}
   \caption{Total number of COVID-19 death cases in Spain from April 1 to
-  April 30, 2020 from official data (red points). The blue line is the
-  theoretical prediction using equation \ref{final_eqn} with
-  $a = -4.827879002776788 \times 10^{-6}$,
-  $b = 0.12215521367938273$, and $A = 122169.433209181$.}
+  April 30, 2020 from official data (red points) and the
+  theoretical prediction using equation \ref{final_eqn} (blue line).}
 \end{figure}
 
 \begin{figure}[H]
@@ -213,14 +214,21 @@ A = 122169.433209181
     \input{fig5.pgf}
   \end{center}
   \caption{The growth rate of $P(t)$ calculated using formula \ref{rate_formula} (red points)
-  and theoretical prediction using equation \ref{final_rate_eqn}.}
+  and theoretical prediction using equation \ref{final_rate_eqn} (blue line).}
 \end{figure}
 
 \section*{Discussion}
 
-The source code of this paper is published at
+The source code of this paper is available at
 \url{https://github.com/hieplpvip/mth252-assignment}.
 
 \printbibliography
+
+\newpage
+
+\appendix
+\section*{Appendix: Data used in this paper}
+
+\input{data.tex}
 
 \end{document}
