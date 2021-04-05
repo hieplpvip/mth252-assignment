@@ -40,11 +40,30 @@
 % Set this value as figure width in matplotlib
 %\printinunitsof{in}\prntlen{\textwidth}
 
+The COVID-19 pandemic in Spain is part of the pandemic of coronavirus disease
+2019 (COVID-19) caused by severe acute respiratory syndrome coronavirus 2
+(SARS-CoV-2). The virus was first confirmed to have spread to Spain on
+31 January 2020, when a German tourist tested positive for SARS-CoV-2 in
+La Gomera, Canary Islands. Post-hoc genetic analysis has shown that at least
+15 strains of the virus had been imported, and community transmission began by
+mid-February. By 13 March, cases had been confirmed in all 50 provinces of the country.
+
+A lockdown was imposed on 14 March 2020. On 29 March, it was announced that,
+beginning the following day, all non-essential workers were ordered to remain at
+home for the next 14 days. By late March, the Community of Madrid has recorded
+the most cases and deaths in the country. Medical professionals and those who
+live in retirement homes have experienced especially high infection rates. On
+25 March, the official death toll in Spain surpassed that of mainland China.
+On 2 April, 950 people died of the virus in a 24-hour period—at the time, the
+most by any country in a single day. On 17 May, the daily death toll announced
+by the Spanish government fell below 100 for the first time, and 1 June was the
+first day without deaths by COVID-19. The state of alarm ended on 21 June.
+
 \section*{Data}
 
 This paper uses data from \texttt{Our World in Data COVID-19 dataset} \autocite{owid-covid-data}.
 
-The period chosen is April 1 to April 30, 2020. Table \ref{table:1} gives some samples from that period.
+The period chosen is April 1 to April 30 2020. Table \ref{table:1} gives some samples from that period.
 
 \begin{table}[h!]
 \centering
@@ -52,20 +71,20 @@ The period chosen is April 1 to April 30, 2020. Table \ref{table:1} gives some s
   \hline
   \textbf{Date} & \textbf{Total number death cases} \\
   \hline
-  April 1, 2020 & 9387 \\
-  April 2, 2020 & 10348 \\
-  April 3, 2020 & 11198 \\
-  April 4, 2020 & 11947 \\
-  April 5, 2020 & 12641 \\
+  April 1 2020 & 9387 \\
+  April 2 2020 & 10348 \\
+  April 3 2020 & 11198 \\
+  April 4 2020 & 11947 \\
+  April 5 2020 & 12641 \\
   \hline
 \end{tabular}
-\caption{Total number of COVID-19 death cases in Spain from April 1 to April 5, 2020.}
+\caption{Total number of COVID-19 death cases in Spain from April 1 to April 5 2020.}
 \label{table:1}
 \end{table}
 
 \section*{Model}
 
-Let $P(t)$ be the total number of death cases $t$ days after April 1, 2020.
+Let $P(t)$ be the total number of death cases $t$ days after April 1 2020.
 The growth rate $\diff{P}{t}$, which represents daily new death cases,
 is calculated using the formula:
 
@@ -99,10 +118,9 @@ is calculated using the formula:
 \end{table}
 
 \begin{figure}[H]
-  \begin{center}
-    \input{fig1.pgf}
-  \end{center}
-  \caption{Total number of COVID-19 death cases in Spain from April 1 to April 30, 2020.}
+  \centering
+  \input{fig1.pgf}
+  \caption{Total number of COVID-19 death cases in Spain from April 1 to April 30 2020.}
 \end{figure}
 
 For this paper, we use a variant of the Logistic Growth Model:
@@ -121,10 +139,11 @@ b &= 0.12215521367938273
 \end{align}
 
 \begin{figure}[H]
-  \begin{center}
-    \input{fig3.pgf}
-  \end{center}
-  \caption{Relative growth rate, $\dfrac{1}{P} \displaystyle\diff{P}{t}$ (red points), as a function of $P$ and the best fitted line (blue).}
+  \centering
+  \vspace*{-1cm}
+  \input{fig3.pgf}
+  \caption{Relative growth rate, $\dfrac{1}{P} \displaystyle\diff{P}{t}$, as a
+  function of $P$ (red points) and the best fitted line (blue).}
 \end{figure}
 
 \section*{Solving Differential Equation}
@@ -201,19 +220,17 @@ A = 122169.433209181
 \end{equation*}
 
 \begin{figure}[H]
-  \begin{center}
-    \input{fig4.pgf}
-  \end{center}
+  \centering
+  \input{fig4.pgf}
   \caption{Total number of COVID-19 death cases in Spain from April 1 to
-  April 30, 2020 from official data (red points) and theoretical prediction
+  April 30 2020 from official data (red points) and theoretical prediction
   using equation \ref{final_eqn} (blue line).}
   \label{prediction}
 \end{figure}
 
 \begin{figure}[H]
-  \begin{center}
-    \input{fig5.pgf}
-  \end{center}
+  \centering
+  \input{fig5.pgf}
   \caption{The growth rate of $P(t)$ calculated using formula \ref{rate_formula} (red points)
   and theoretical prediction using equation \ref{final_rate_eqn} (blue line).}
 \end{figure}
